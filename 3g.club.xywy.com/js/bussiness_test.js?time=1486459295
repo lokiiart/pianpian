@@ -1,0 +1,89 @@
+var cityname = _RET_IP.data.area.split('|');
+cityname = cityname[1];
+var alwaysShow = "全国";
+var alwaysShowoh = "广东";
+var aTitle = "向他咨询";
+(function(classname,attributeName,delimiter){
+	var isShow = function(address){
+	    if(!address){
+	       return true;
+	    }
+		
+		if (subject_pid == 766) {
+			var addresses = address.split('#');
+			//var cityname = decodeURIComponent(getCookie('__gg_city'));
+			//cityname = __xywy_ad_city;
+			if (address == alwaysShow) {
+				if (cityname.indexOf('北京') >= 0)
+				{
+					return false;
+				} else if (cityname.indexOf('上海') >= 0)
+				{
+					return false;
+				} else if (cityname.indexOf('深圳') >= 0)
+				{
+					return false;
+				} else if (cityname.indexOf('广州') >= 0)
+				{
+					return false;
+				}
+				return true;
+			} else if (address == alwaysShowoh)
+			{
+				if (cityname.indexOf('深圳') >= 0)
+				{
+					return false;
+				} else if (cityname.indexOf('广州') >= 0)
+				{
+					return false;
+				} 
+			}
+		}
+		else {
+			if (address == alwaysShow) {
+				return true;
+			}
+			var addresses = address.split('#');
+			//var cityname = decodeURIComponent(getCookie('__gg_city'));
+			//cityname = __xywy_ad_city;
+	    }
+		for(var i=0;i<addresses.length;i++) {
+			if (cityname.indexOf(addresses[i]) == 0) {
+				return true;
+			}
+		}
+		return false;
+	};
+	var nodelist =  document.querySelectorAll('.'+classname);
+	var data,node,bussiness;
+	for(var i = 0,len=nodelist.length; i<len;i++) {
+		node = nodelist[i];
+		if(data = node.getAttribute(attributeName)) {
+			bussiness = data.split(delimiter);
+			if(bussiness[0] && isShow(bussiness[1])){
+			    if(node.href.indexOf('http')>-1){
+				    node.setAttribute('href',bussiness[0]);
+				    node.innerHTML = aTitle;
+                }
+			}else{
+			   if(node.href.indexOf('tel')>-1){
+			         node.style.display='none';
+			   }
+			}
+
+		}
+	}
+    
+    nodelist =  document.querySelectorAll('.hospital');
+	for(var i = 0,len=nodelist.length; i<len;i++) {
+		node = nodelist[i];
+		if(data = node.getAttribute(attributeName)) {
+			bussiness = data.split(delimiter);
+			if(!isShow(bussiness[1])){
+				node.style.display = 'none';
+			}
+		}
+	}
+
+    
+})('blueBtn','data','<-->');
