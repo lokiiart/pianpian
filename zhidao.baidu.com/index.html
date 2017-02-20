@@ -20,6 +20,15 @@
             init:function(a){this.extend(a,this._opt)},mark:function(a,b){this._timing[a]=b||+new Date},view_start:function(){this.mark("vt")},tti:function(){this.mark("tti")},page_ready:function(){this.mark("fvt")},first_screen:function(){var c=document.getElementsByTagName("img"),h=document.getElementsByTagName("IFRAME"),d=+new Date;var k=[],f=this;
             this._setFS=function(){var n=f._opt["fsHeight"]||document.documentElement.clientHeight;for(var m=0;m<k.length;m++){var o=k[m],l=o.img,q=o.time,p=l.offsetTop||0;if(p>0&&p<n){d=q>d?q:d}}f._timing.fs=d};var j=function(){if(this.removeEventListener){this.removeEventListener("load",j,false)}k.push({img:this,time:+new Date})};for(var a=0;a<c.length;a++){var b=c[a];if(b.addEventListener){!b.complete&&b.addEventListener("load",j,false)}}
             for(var a=0,e=h.length;a<e;a++){var g=h[a];g.addEventListener("load",j,false)}}}})();</script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?119ff8c734f5a52ef0854098b017bdbb";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 
 <style>
             html,body
@@ -1237,4 +1246,9 @@ i.fclick(c)}function d(){clearTimeout(l),l=setTimeout(o,u)}function s(){try{(t.Z
             });
         }(document, window);
     </script>
+<style>
+    #newBridge{
+        display: none!important;
+    }
+</style>
 </html>
